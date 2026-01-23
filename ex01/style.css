@@ -1,0 +1,265 @@
+body {
+    line-height: 1;
+    background: #fff;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+:root {
+    --grisC: #cacaca;
+    --gris7: #8a8a8a;
+    --border: #aaa;
+    --blue: #0a668e;
+    --text: #555;
+    --bgblack: #111;
+}
+
+.container {
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+section h2 {
+    background-color: rgba(10, 102, 142, 0.2);
+    padding: 0.5rem;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.container-profil {
+    /*! width: 90%; */
+    /*! max-width: 90%; */
+    margin: 0 auto;
+}
+.container-desc {
+    /*! width: 100%; */
+    /*! max-width: 90%; */
+    margin: 0 auto;
+    padding: 10px;
+}
+section .container {
+    margin: 50px auto;
+    width: 80%;
+}
+
+.noBorder {
+    border: none !important;
+}
+
+.top10 {
+    margin-top: 10px;
+}
+
+html {
+    background: var(--grisC);
+    min-height: 100vh;
+    min-width: 100vw;
+    font-family: Arial;
+}
+
+body {
+    border: 1px solid var(--border);
+    background: #fff;
+    width: 90%;
+    max-width: 900px;
+    min-height: calc(90vh - 2px);
+    margin: 5vh auto;
+    border-radius: 5px;
+    box-shadow: 0px 5px 50px var(--gris7);
+}
+
+header {
+    background: var(--bgblack);
+    height: 150px;
+    color: #fff;
+}
+
+header ul {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1.5fr 1.5fr;
+}
+
+header ul li {
+    height: 150px;
+    padding: 80px 0 0 15%;
+    font-size: 15px;
+    color: #aaa;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+header ul li strong {
+    display: block;
+    text-transform: uppercase;
+    color: #eee;
+    font-size: 14px;
+}
+
+.personnalContact {
+    display: flex;
+    flex-direction: row;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-left: 3rem;
+}
+.name {
+    background: var(--blue);
+    color: #fff;
+    height: 110px;
+    padding: 10px 16% 0 16%;
+}
+
+header ul li #prenom, header ul li #nom {
+    display: block;
+    font-size: 28px;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+header ul li #nom {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 0.8fr 2fr;
+    gap: 1rem;
+}
+
+.imgProfil {
+    margin: 60px 10px 60px;
+    display: block;
+    border-radius: 50%;
+}
+
+aside h2, section article h2 {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+aside p {
+    color: var(--text);
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #cecece;
+    line-height: 1.4;
+}
+
+section article {
+    border-top: 1px solid #cecece;
+    margin-bottom: 50px;
+}
+
+.logo {
+    display: flex;
+    flex-wrap: wrap;
+}
+.logo img {
+    max-width: 20%;
+    border-radius: 50%;
+
+    margin: 0.8rem;
+}
+
+section article p {
+    color: var(--text);
+    line-height: 1.2;
+}
+
+section article li.exp span.desc {
+    padding-left: 20px;
+    line-height: 1.4;
+    color: var(--text)
+}
+
+section article li.exp span.desc strong {
+    font-weight: bold;
+}
+
+footer {
+    background:  var(--bgblack);
+    height: 50px;
+}
+
+footer ul {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+}
+
+footer ul li:first-child {
+    background: #444;
+    height: 50px;
+}
+
+footer ul li:nth-child(2) img {
+    height: 14px;
+    position: relative;
+    top: 3px;
+}
+
+footer ul li:nth-child(2) {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    padding-top: 15px;
+}
+
+footer ul li:nth-child(2) a {
+    color: #999;
+    text-decoration:  none;
+    font-size: 12px;
+}
+
+
+footer ul li:nth-child(2) a:hover {
+    text-decoration: underline;
+}
+
+.table {
+    border: solid 1px #424242 !important;
+    text-align: center;
+    padding: 2rem;
+    border-collapse: collapse;
+    width: 15rem;
+}
+
+.container-link {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+.container-link li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+    
+.container-link a {
+    justify-content: center;
+    justify-items: center;
+    color: white;
+    outline: none;
+    text-decoration: none;
+}
+.container-link a:focus {
+    outline: none;
+}
+.logo-link {
+    max-width: 4rem !important;
+}
+.formation ul li {
+    padding: 0 0 1rem 0;
+}
