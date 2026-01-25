@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal Portfolio</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <form
+        onsubmit="
+          displayFormContents();
+          return false;
+        "
+      >
+        <ul>
+          <li>
+            <input type="checkbox" id="student" name="student" />
+          </li>
+          <li>
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" />
+          </li>
+          <li>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" />
+          </li>
+          <li>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" />
+          </li>
+          <li>
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" />
+          </li>
+          <li>
+            <label for="mail">Mail:</label>
+            <input type="text" id="email" name="email" />
+          </li>
+          Gender:
+          <li>
+            <label>
+              <input type="radio" id="gender_male" name="gender" value="male" />
+              Male
+            </label>
+          </li>
+          <li>
+            <label>
+              <input
+                type="radio"
+                id="gender_female"
+                name="gender"
+                value="female"
+              />
+              Female
+            </label>
+          </li>
+          <li>
+            <label>
+              <input
+                type="radio"
+                id="gender_other"
+                name="gender"
+                value="other"
+              />
+              Other
+            </label>
+          </li>
+        </ul>
+        <input type="button" value="Submit" onclick="displayFormContents()" />
+      </form>
+    </main>
+  </body>
+  <script src="popup.js"></script>
+</html>
