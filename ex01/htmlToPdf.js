@@ -25,7 +25,7 @@ await page.addStyleTag({
 });
 
 await page.pdf({
-  path: "thibault_goudmand_web_developer_cv.pdf",
+  path: "thibault_goudmand_web_developer_cv2.pdf",
   format: "A4",
   printBackground: true,
   preferCSSPageSize: true,
