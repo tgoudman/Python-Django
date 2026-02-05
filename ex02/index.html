@@ -2,23 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Personal Portfolio</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Ex02</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+	<script src="popup.js" alt="ee"></script>
   </head>
   <body>
     <header></header>
     <main>
-      <form
-        onsubmit="
-          displayFormContents();
-          return false;
-        "
+      <form onsubmit="return false;"
+
       >
         <ul>
-          <li>
-            <input type="checkbox" id="student" name="student" />
-          </li>
+
           <li>
             <label for="firstname">First Name:</label>
             <input type="text" id="firstname" name="firstname" />
@@ -39,39 +36,45 @@
             <label for="mail">Mail:</label>
             <input type="text" id="email" name="email" />
           </li>
+	      <li>
+            <input type="checkbox" id="student" name="student" />
+			Student at 42 ?
+          </li>
           Gender:
+		  <div class="radioButton">
           <li>
             <label>
+				Male
               <input type="radio" id="gender_male" name="gender" value="male" />
-              Male
             </label>
           </li>
           <li>
             <label>
+				Female
               <input
                 type="radio"
                 id="gender_female"
                 name="gender"
                 value="female"
               />
-              Female
             </label>
           </li>
           <li>
-            <label>
-              <input
-                type="radio"
-                id="gender_other"
-                name="gender"
-                value="other"
-              />
-              Other
-            </label>
-          </li>
+			  <label>
+				  Other
+				  <input
+				  type="radio"
+				  id="gender_other"
+				  name="gender"
+				  value="other"
+				  />
+				</label>
+			</li>
+		</div>
         </ul>
-        <input type="button" value="Submit" onclick="displayFormContents()" />
+        <input type="button" value="Run that sexy Javascript !" onclick="displayFormContents()" />
       </form>
     </main>
   </body>
-  <script src="popup.js"></script>
+  
 </html>
