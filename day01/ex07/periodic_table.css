@@ -1,0 +1,97 @@
+#number21, #number22, #number23, #number24, #number25, #number26, #number27, #number28, #number29,
+#number39, #number40, #number41, #number42, #number43, #number44, #number45, #number46, #number47,
+#number72, #number73, #number74, #number75, #number76, #number77, #number78, #number79 {
+	background-color: pink;
+}
+#number3, #number11, #number19, #number37, #number55, #number87
+{
+	background-color: lightcoral;
+}
+
+#number4, #number12, #number20, #number38, #number56, #number88
+{
+	background-color: #F5F5DC;
+}
+
+#number4, #number12, #number20, #number38, #number56, #number88
+{
+	background-color: #F5F5DC;
+}
+
+#number6, #number7, #number8, #number15, #number16, #number34, #number1
+{
+	background-color: lightgreen;
+}
+
+#number9, #number17, #number35, #number53
+{
+	background-color: lightyellow;
+}
+
+#number2, #number10, #number18, #number36, #number54, #number86
+{
+	background-color: lightblue;
+}
+
+#number5, #number14, #number32, #number33, #number51, #number52, #number85
+{
+	background-color:  #908c5b;
+}
+
+#number104, #number105, #number106, #number107, #number108, #number112
+{
+	background-color:  rgba(255, 192, 203, 0.5);
+}
+
+#number109, #number110, #number111, #number113, #number114, #number115, #number116, #number117, #number118
+{
+	background-color:  rgba(211, 211, 211, 0.5);
+}
+
+#number13, #number30, #number31, #number48, #number49, #number50,
+#number80, #number81, #number82, #number83, #number84, #number50
+{
+	background-color: lightgrey;
+}
+
+#number1, #number7, #number8, #number9, #number17, #number2,
+#number10, #number18, #number36, #number54, #number86
+{
+	color: red;
+}
+
+#number35, #number80
+{
+	color: blue;
+}
+
+body {
+	overflow-x: scroll;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+td {
+    width: 60px;
+    font-size: 10px;
+	border: 1px solid black;
+	padding: 10px;
+	text-align: center;
+}
+
+td.empty {
+	border: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.small {
+	font-size: xx-large;
+}
