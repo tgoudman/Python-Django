@@ -1,7 +1,10 @@
 def main():
-	with open("day01/ex01/numbers.txt") as fd:
-		for line in fd.readlines():
-			print_line(line)
+	try:
+		with open("/home/tgoudman/programmation/pythonDjangoRepoGit/day01/ex01/numbers.txt") as fd:
+			for line in fd.readlines():
+				print_line(line)
+	except FileNotFoundError:
+		print("File not found.")
 
 def print_line(lines: str):
 	nodes = lines.split(',')

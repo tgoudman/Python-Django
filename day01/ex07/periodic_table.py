@@ -6,6 +6,7 @@ def ft_print(dictionnary : dict):
 		print('\n')
 
 def generate_html(tableau):
+
 	fd = open("periodic_table.html", "w")
 	fd.write("<!DOCTYPE html>\n")
 	fd.write('<html lang="en">\n')
@@ -48,6 +49,7 @@ def generate_html(tableau):
 	fd.write("</body>\n")
 	fd.write("</html>\n")
 	fd.close()
+
 	
 def build_table(dictionnaire):
 	tableau = []
@@ -74,17 +76,22 @@ def build_table(dictionnaire):
 
 
 def parse():
-	fd = open("periodic_table.txt", "r")
-	dict = {}
-	for line in fd.readlines():
-		result = line.split("=")
-		nom = result[0].strip()
-		atributs = {}
+	try:
 
-		for paire in result[1].split(","):
-			resultPaire = paire.split(":")
-			atributs[resultPaire[0].strip()] = resultPaire[1].strip()
-		dict[nom] = atributs
+		fd = open("periodic_table.txt", "r")
+		dict = {}
+		for line in fd.readlines():
+			result = line.split("=")
+			nom = result[0].strip()
+			atributs = {}
+
+			for paire in result[1].split(","):
+				resultPaire = paire.split(":")
+				atributs[resultPaire[0].strip()] = resultPaire[1].strip()
+			dict[nom] = atributs
+	except FileNotFoundError:
+		print("File not found.")
+		exit()
 	
 	return dict
 
