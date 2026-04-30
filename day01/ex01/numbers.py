@@ -1,6 +1,6 @@
 def main():
 	try:
-		with open("/home/tgoudman/programmation/pythonDjangoRepoGit/day01/ex01/numbers.txt") as fd:
+		with open("numbers.txt") as fd:
 			for line in fd.readlines():
 				print_line(line)
 	except FileNotFoundError:
