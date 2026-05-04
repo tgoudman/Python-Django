@@ -34,17 +34,6 @@ class Elem:
 		else:
 			raise Elem.ValidationError()
 
-class Html(Elem):
-	def __init__(self, content=None):
-		super().__init__('html', {}, content)
-
-class Head(Elem):
-	def __init__(self, content=None):
-		super().__init__('head', {}, content)
-
-class Body(Elem):
-	def __init__(self, content=None):
-		super().__init__('body', {}, content)
 
 class Title(Elem):
 	def __init__(self, content=None):
