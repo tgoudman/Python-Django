@@ -60,10 +60,3 @@ class Hr(Elem):
 class Br(Elem):
 	def __init__(self, attr: dict = {}):
 		super().__init__(tag='br', attr=attr, tag_type='double')
-
-
-if __name__ == '__main__':
-	print(Html([
-		Head([Title([Text("Hello ground!"),])]),
-   		Body([H1([Text("Oh no, not again!")]), Img({"src" : "http://i.imgur.com/pfp3T.jpg"})])
-		]))
