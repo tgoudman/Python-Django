@@ -1,0 +1,18 @@
+# Virtual environment
+django_venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Django
+*.sqlite3
+locale_settings.py
+
+# VS code
+.vscode/
+
+# OS
+.DS_Store
