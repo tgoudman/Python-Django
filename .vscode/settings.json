@@ -1,6 +1,0 @@
-{
-    "python.REPL.enableREPLSmartSend": false,
-    "python.analysis.extraPaths": [
-        "./day03/ex01/local_lib"
-    ]
-}
