@@ -1,0 +1,21 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+table {
+    width: 600px;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: solid 1px black;
+    padding: 8px;
+}
+
+td:first-child {
+    background-color: lightgrey;
+}
