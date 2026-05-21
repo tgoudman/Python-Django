@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ex01 : Moteur de template{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'ex01/style2.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Django Template Engine</h1>
+    <h2>Blocks </h2>
+    <p>
+        A block (<code>{% verbatim  %}{% block name %}{% endblock %}{% endverbatim %}</code>)
+        is an area that a child template can replace or extend.
+        it's a the foundation of the template inheritance mechanism..
+    </p>
+    <h2>For loop</h2>
+    <p>You can iterate over any list passed to the context</p>
+    <pre><code>{% verbatim %}{% for item in my_list %}
+        <li>{{item}}</li>
+        {% endfor %}{% endverbatim %}</code></pre>
+        <ul>
+            {% for fruit in fruits %}
+            <li>{{ fruit }}</li>
+            {% endfor %}
+        </ul>
+    <h2>Conditionals</h2>
+    <p>Test a variable or an expression :</p>
+    <pre><code>{% verbatim %}{% if user.is_authenticated %}
+        <p>Hi {{ user.username}}</p>
+        {% else %}
+        <p> Your are not connected </p>
+        {% endif %}{% endverbatim %}</code></pre>
+    {% if show_message %}
+    <p>✔ Right condition</p>
+    {% else %}
+    <p>✘ False condition</p>
+    {% endif %}
+    <h2>variables context</h2>
+    <p>
+        A variable passed from the view inside the context dictionary <code>context</code>
+        displayed using the syntax <code>{% verbatim %}{{ name_variable }}{% endverbatim %}</code>
+    </p>
+    <p>Example received value : <strong>{{ page_title }}</strong></p>
+{% endblock %}

@@ -1,1 +1,49 @@
-rth;w4hpgio
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ex01 : Processus d’affichage d’une page statique.{% endblock %}
+
+{% block content %}
+<h1>How a static page is displayed.</h1>
+
+<p>
+  When the client sends a request to the server, Django checks
+  the URL configuration defined in <code>urls.py</code>.
+  Here, a single <code>re_path</code> rule that uses a regex to capture every incoming URL
+  to <code>ex01_resolver</code> function from the view python file:
+</p>
+
+<pre><code>urlpatterns = [
+    re_path(r'.*', views.ex01Resolver)
+]</code></pre>
+
+<p>
+  The view then extracts the page name directly from the URL path
+  and builds the template filename dynamically:
+</p>
+
+<pre class="code"><code>def ex01Resolver(request: HttpRequest) -> HttpResponse:
+    file = f"ex01/{request.path.split('/')[2]}.html"
+    if file.find("..") != -1:
+        response = render(request, "error.html", {"code": "403", "message": "forbidden"})
+        response.status_code = 403
+        return response
+    try:
+        response = render(request, file)
+    except:
+        response = render(request, "error.html", {"code": "404", "message": "file not found"})
+        response.status_code = 404
+    return response</code></pre>
+
+<p>
+  For example, a request to <code>/ex01/affichage</code> will load
+  the template <code>ex01/affichage.html</code>.
+  The view handles three possible outcomes:
+</p>
+
+<ul>
+  <li><strong>200 OK</strong> — the template exists and is rendered in the browser.</li>
+  <li><strong>403 Forbidden</strong> — the path contains <code>..</code>, which could be a directory traversal attack.</li>
+  <li><strong>404 Not Found</strong> — the template file does not exist.</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+h1 {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    max-width: 80%;
+    justify-content: center;
+    color: blue;
+}
+
+pre {
+    background-color: lightgray;
+    border: solid 1px black;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 5px;
+}
