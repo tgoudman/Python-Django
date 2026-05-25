@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<table>
+
+    <tr>
+        <th>Black</th>
+        <th>Green</th>
+        <th>Blue</th>
+        <th>Red</th>
+    </tr>
+    {% for line in lines %}
+    <tr>
+        <td style="width:80px;height:40px;background-color:{{ line.black }};"></td>
+        <td style="width:80px;height:40px;background-color:{{ line.green }};"></td>
+        <td style="width:80px;height:40px;background-color:{{ line.blue }};"></td>
+        <td style="width:80px;height:40px;background-color:{{ line.red }};"></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
