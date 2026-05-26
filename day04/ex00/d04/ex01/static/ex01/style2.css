@@ -1,3 +1,25 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    gap: 10px;
+    background-color: lightgray;
+    margin-bottom: 20px;
+    padding: 10px;
+    justify-content: space-evenly;
+}
+
+nav, a {
+    color: black;
+    margin: 5px;
+    text-decoration: none;
+}
+
+nav, a:hover {
+    color: white;
+}
+
+
 h1 {
     margin: auto;
     display: flex;
@@ -6,9 +28,12 @@ h1 {
 }
 
 body {
+    font-family:Arial, Helvetica, sans-serif;
     max-width: 80%;
     justify-content: center;
     color: red;
+    margin: auto;
+
 }
 
 pre {

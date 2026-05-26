@@ -14,7 +14,7 @@ def secureLogsForm(data: str):
         f.write(f"[{timestamp}] {data}\n")
 
 def ex02Resolver(request: HttpRequest) -> HttpResponse:
-    file = f"ex02/{request.path.split('/')[2]}.html"
+    file = f"ex02/{request.path.split('/')[1]}.html"
     if file.find("..") != -1:
         response = render(request, "error.html", {"code": "403", "message": "forbiden"})
         response.status_code = 403
@@ -34,7 +34,7 @@ def ex02Resolver(request: HttpRequest) -> HttpResponse:
             with open(log_file, "r") as f:
                 history = f.readlines()
             
-        return render(request, "ex02/index.html", {"form": form, "history": history, "name": name})
+        return render(request, file, {"form": form, "history": history, "name": name})
     except TemplateDoesNotExist:
         response  = render(request, "error.html", {"code" : "404", "message" : "file not found" })
     except Exception as e:

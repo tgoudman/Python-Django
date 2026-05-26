@@ -19,13 +19,13 @@ def getcolor() -> list[dict] :
 
 def ex03Resolver(request: HttpRequest) -> HttpResponse:
     try:
-        file = f"ex03/{request.path.split('/')[2]}.html"
+        file = f"ex03/{request.path.split('/')[1]}.html"
         if file.find("..") != -1:
             response = render(request, "error.html", {"code": "403", "message": "forbidden"})
             response.status_code = 403
             return response
         lines = getcolor()
-        response = render(request, "ex03/index.html", {"lines": lines})
+        response = render(request, file, {"lines": lines})
     except TemplateDoesNotExist:
             response = render(request, "error.html", {"code": "404", "message": "file not found"})
             response.status_code = 404
