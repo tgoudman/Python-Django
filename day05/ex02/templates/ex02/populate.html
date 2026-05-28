@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}        
+    <h1>Exercice 02 : SQL - insertion de données</h1>
+    <p>Hi ! Populate {% if error %}
+        <p><strong>Can't insert in Table, value already exist:</strong></em></strong></p>
+        {% for conflict in error %}
+        <p>{{ conflict }}</p>
+        {% endfor %}
+        {% else %}{% for movie in moviesInserted %}<p>OK - {{ movie }}</p>{% endfor %}{% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="Reset Database">
+    </form>
+{% endblock %}

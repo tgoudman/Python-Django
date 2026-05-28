@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}        
+    <h1>Exercice 02 : SQL - insertion de données</h1>
+    <p>Hi ! Display</p>
+    {% if error %}
+        {{ error }}
+    {% else %}
+        {% for movie in data %}
+            <p>{{ movie }}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
