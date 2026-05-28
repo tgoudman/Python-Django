@@ -14,4 +14,4 @@ def ex01resolver(request: HttpRequest) -> HttpResponse:
 		movies.save()
 	except Exception as e:
 		return render(request, "error.html", {"code": "OperationalError", "message": str(e)})
-	return render(request, "init01.html", {"movies": movies})
+	return render(request, "ex01/init01.html", {"movies": movies})

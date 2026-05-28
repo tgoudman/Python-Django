@@ -23,10 +23,12 @@ def ex02_init(request: HttpRequest) -> HttpResponse:
 				);
 		""")
 		connection.commit()
+		cursor.execute(" SELECT COUNT (*) FROM ex02_movies ")
+		countDatabase = cursor.fetchone()[0]
 		cursor.close()
 		connection.close()
 		file = request.path[1:] + ".html"
-		return render(request, file)
+		return render(request, file, {"database" : countDatabase})
 	except psycopg2.OperationalError as e:
 		return render(request, "error.html", {"code": "OperationalError", "message": str(e)})
 	except psycopg2.ProgrammingError as e:
@@ -49,7 +51,8 @@ def ex02_populate(request: HttpRequest) -> HttpResponse:
 			(3, 'Revenge of the Sith',		'George Lucas',		'Rick McCallum',									'2005-05-19'),
 			(4, 'A New Hope',				'George Lucas',		'Gary Kurtz, Rick McCallum',						'1977-05-25'),
 			(5, 'The Empire Strikes Back',	'Irvin Kershner',	'Gary Kurtz, Rick McCallum',						'1980-05-17'),
-			(6, 'Return of the Jedi',		'Richard Marquand',	'Howard Kazanjian, George Lucas, Rick McCallum', '1983-05-25'),
+			(6, 'Return of the Jedi',		'Richard Marquand',	'Howard Kazanjian, George Lucas, Rick McCallum', 	'1983-05-25'),
+			(7, 'The Force Awakens',		' J. J. Abrams',	'Kathleen Kennedy, J. J. Abrams, Bryan Burk', 		'2015-12-11'),
 		]
 		form = resetDataBase()
 		if request.method == "POST":
@@ -70,6 +73,7 @@ def ex02_populate(request: HttpRequest) -> HttpResponse:
 			if cursor.fetchone() is None:
 				conflicts.append(movie[1])
 		connection.commit()
+
 		print("Data inserted successfully !")
 		cursor.close()
 		connection.close()
