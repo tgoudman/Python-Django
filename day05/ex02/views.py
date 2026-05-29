@@ -52,7 +52,7 @@ def ex02_populate(request: HttpRequest) -> HttpResponse:
 			(4, 'A New Hope',				'George Lucas',		'Gary Kurtz, Rick McCallum',						'1977-05-25'),
 			(5, 'The Empire Strikes Back',	'Irvin Kershner',	'Gary Kurtz, Rick McCallum',						'1980-05-17'),
 			(6, 'Return of the Jedi',		'Richard Marquand',	'Howard Kazanjian, George Lucas, Rick McCallum', 	'1983-05-25'),
-			(7, 'The Force Awakens',		' J. J. Abrams',	'Kathleen Kennedy, J. J. Abrams, Bryan Burk', 		'2015-12-11'),
+			(7, 'The Force Awakens',		'J. J. Abrams',	'Kathleen Kennedy, J. J. Abrams, Bryan Burk', 		'2015-12-11'),
 		]
 		form = resetDataBase()
 		if request.method == "POST":

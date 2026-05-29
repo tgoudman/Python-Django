@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Ex04 data supress.</h1>
+    {% if inserted or conflicts %}
+        {% for data in inserted %}
+            <p>OK: {{data}}</p>
+        {% endfor %}
+        {% for data in conflicts %}
+            <p>Data already exist: {{data}}</p>
+        {% endfor %}
+    {% else %}
+        <p>No data Available.</p>
+    {% endif %}
+{% endblock %}
