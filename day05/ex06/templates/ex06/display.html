@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <nav>
+        <a href="/ex06/init">Iniatialisation</a>
+        <a href="/ex06/populate">Populate</a>
+        <a href="/ex06/display">Display</a>
+        <a href="/ex06/update">Update</a>        
+    </nav>
+    <h1>Display.</h1>
+    <table>
+        <tr>
+            <th>Episode</th>
+            <th>Title</th>
+            <th>Opening Crawl</th>
+            <th>Director</th>
+            <th>Producer</th>
+            <th>Release Date</th>
+            <th>Created data</th>
+            <th>Update data</th>
+        </tr>
+        {% for movie in data %}
+        <tr>
+            <td>{{ movie.episode_nb }}</td>
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.opening_crawl }}</td>
+            <td>{{ movie.director }}</td>
+            <td>{{ movie.producer }}</td>
+            <td>{{ movie.release_date }}</td>
+            <td>{{ movie.created }}</td>
+            <td>{{ movie.updated }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">No data available</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

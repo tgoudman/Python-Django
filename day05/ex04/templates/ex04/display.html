@@ -1,4 +1,13 @@
+
+{% extends "base.html" %}
 {% block content %}
+    <nav>
+        <a href="/ex04/init">Init</a>
+        <a href="/ex04/populate">Populate</a>
+        <a href="/ex04/display">Display</a>
+        <a href="/ex04/remove">Remove</a>
+    </nav>
+    <h1>Display.</h1>
     <table>
         <tr>
             <th>Episode</th>
@@ -18,7 +27,7 @@
             <td>{{ movie.release_date }}</td>
         </tr>
         {% empty %}
-        <tr><td colspan="5">No data available</td></tr>
+        <tr><td colspan="6">No data available</td></tr>
         {% endfor %}
     </table>
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <nav>
+        <a href="/ex06/init">Iniatialisation</a>
+        <a href="/ex06/populate">Populate</a>
+        <a href="/ex06/display">Display</a>
+        <a href="/ex06/update">Update</a>
+    </nav>
+    <h1>Populate.</h1>
+    {% if inserted or conflicts %}
+        {% for data in inserted %}
+            <p>OK: {{data}}</p>
+        {% endfor %}
+        {% for data in conflicts %}
+            <p>Data already exist: {{data}}</p>
+        {% endfor %}
+    {% else %}
+        <p>No data Available.</p>
+    {% endif %}
+{% endblock %}

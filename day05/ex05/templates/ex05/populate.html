@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    <nav>
+        <a href="/ex05/populate">Populate</a>
+        <a href="/ex05/display">Display</a>
+        <a href="/ex05/remove">Remove</a>
+    </nav>
+    <h1>Populate.</h1>
+    {% if inserted or conflicts %}
+        {% for data in inserted %}
+            <p>OK: {{data}}</p>
+        {% endfor %}
+        {% for data in conflicts %}
+            <p>Data already exist: {{data}}</p>
+        {% endfor %}
+    {% else %}
+        <p>No data Available.</p>
+    {% endif %}
+{% endblock %}

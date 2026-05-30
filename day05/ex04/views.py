@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 import psycopg2
 import psycopg2.extras
+from .forms import deleteDatabaseEx04, get_movies
 
-def connectdb() -> psycopg2:
+
+def connectdb():
 	connection = psycopg2.connect(
 	dbname="42_bdd",
 	user="tgoudman"
@@ -89,12 +91,22 @@ def ex04_display(request: HttpRequest) -> HttpResponse:
 def ex04_remove(request: HttpRequest) -> HttpResponse:
 	try: 
 		file = request.path[1:] + ".html"
-		connection = connectdb()
-		cursor = connection.cursor()
-		cursor.execute(""" DELETE FROM ex04_movies;""")
-		connection.commit()
-		cursor.close()
-		connection.close()
-		return render(request, file)
+		form = deleteDatabaseEx04()
+		empty = len(get_movies())
+		if request.method == 'POST':
+			form = deleteDatabaseEx04(request.POST)
+			if form.is_valid():
+				connection = connectdb()
+				cursor = connection.cursor()
+				if form.cleaned_data["movies"]:
+					cursor.execute("DELETE FROM ex04_movies;")
+				elif form.cleaned_data["movie"]:
+					episode = form.cleaned_data["movie"]
+					cursor.execute("DELETE FROM ex04_movies WHERE episode_nb = %s;", (episode,))
+				connection.commit()
+				cursor.close()
+				connection.close()
+				empty = len(get_movies())
+		return render(request, file, {"form": form, "empty": empty})
 	except Exception as e:
 		return render(request, "error.html", {"code" : "Error", "message" : str(e)})

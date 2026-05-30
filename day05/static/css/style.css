@@ -1,0 +1,31 @@
+body {
+    margin: auto;
+    width: 80%;
+}
+
+nav {
+    background-color: lightgray;
+    padding: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+    gap: 10px;
+}
+
+nav a:hover {
+    color: grey;
+}
+tr th {
+    background-color: lightgray;
+}
+
+th, td {
+    border: 1px solid;
+}
+
+table {
+    border-collapse: collapse;
+}

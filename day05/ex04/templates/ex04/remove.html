@@ -1,4 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Test supress</h1>
+    <nav>
+        <a href="/ex04/init">Init</a>
+        <a href="/ex04/populate">Populate</a>
+        <a href="/ex04/display">Display</a>
+        <a href="/ex04/remove">Remove</a>
+    </nav>
+    <h1>Data supress.</h1>
+    {% if empty == 0 %}
+        <p>No data available</p>
+    {% else %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="remove">
+    </form>
+    {% endif %}
 {% endblock %}
