@@ -10,5 +10,8 @@ class Movies(models.Model):
     release_date = models.DateField(null=False)
     created = models.DateTimeField(auto_now_add=True, null=False)
     updated = models.DateTimeField(auto_now=True, null=False)
+
+    class Meta:
+        db_table = "ex07_movies" 
     def __str__(self):
         return self.title

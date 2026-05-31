@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
-from .models import Movies
 import psycopg2
-from .forms import updateDatabase, get_movies 
 
-def ex07_populate(request: HttpRequest) -> HttpResponse:
+def ex08_populate(request: HttpRequest) -> HttpResponse:
     try:
         file = request.path[1:] + ".html"
         # full_clean() forces Django validation before saving to database
@@ -37,11 +35,10 @@ def ex07_populate(request: HttpRequest) -> HttpResponse:
     except Exception as e:
         import traceback
         return render(request, "error.html", {
-            "code": type(e).__name__,       # ✅ nom exact de l'exception
-            "message": traceback.format_exc()  # ✅ trace complète
-        })
+            "code": type(e).__name__,
+            "message": traceback.format_exc()
 
-def ex07_remove(request: HttpRequest) -> HttpResponse:
+def ex08_remove(request: HttpRequest) -> HttpResponse:
     try:
         file = request.path[1:] + ".html"
         movies = Movies.objects.all()
@@ -51,7 +48,7 @@ def ex07_remove(request: HttpRequest) -> HttpResponse:
     except Exception as e:
         return render(request, "error.html", {"code": "OperationalError", "message": str(e)})
 
-def ex07_display(request: HttpRequest) -> HttpResponse:
+def ex08_display(request: HttpRequest) -> HttpResponse:
     try:
         file = request.path[1:] + ".html"
         getMovies = Movies.objects.all().order_by('episode_nb')
@@ -59,7 +56,7 @@ def ex07_display(request: HttpRequest) -> HttpResponse:
     except Exception as e:
         return render(request, "error.html", {"code": "OperationalError", "message": str(e)})
 
-def ex07_update(request: HttpRequest) -> HttpResponse:
+def ex08_update(request: HttpRequest) -> HttpResponse:
     try:
         file = request.path[1:] + ".html"
         form = updateDatabase()

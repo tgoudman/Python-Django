@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path("populate", views.ex07_populate),
-#    path("display", views.ex07_display),
-#    path("update", views.ex07_update),
+    path("display", views.ex07_display),
+    path("update", views.ex07_update),
 ]
