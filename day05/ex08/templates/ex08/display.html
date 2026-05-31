@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <nav>
+        <a href="/ex08/init">Init</a>
+        <a href="/ex08/populate">Populate</a>
+        <a href="/ex08/display">Display</a>    
+    </nav>
+    <h1>Display.</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Homeworld</th>
+            <th>Climate</th>
+        </tr>
+        {% for character in data %}
+        <tr>
+            <td>{{ character.0 }}</td>
+            <td>{{ character.1 }}</td>
+            <td>{{ character.2 }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">No data available</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}
