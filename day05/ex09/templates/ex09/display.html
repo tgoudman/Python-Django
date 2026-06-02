@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <h1>Display.</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Homeworld</th>
+            <th>Climate</th>
+        </tr>
+        {% for character in data %}
+        <tr>
+            <td>{{ character.name }}</td>
+            <td>{{ character.homeworld.name }}</td>
+            <td>{{ character.homeworld.climate }}</td>
+        </tr>
+        {% empty %}
+
+        {% endfor %}
+    </table>
+{% endblock %}
