@@ -1,12 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from .models import Planets, People
-import psycopg2
 
 def ex09_display(request: HttpRequest) -> HttpResponse:
     try:
-        connection = psycopg2.connect(dbname="42_bdd", user="tgoudman")
-        cursor = connection.cursor()
         file = request.path[1:] +'.html'
         people = People.objects.filter(
             homeworld__climate__icontains="windy"

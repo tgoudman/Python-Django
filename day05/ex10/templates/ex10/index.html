@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Display.</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+{% if results %}
+    <table>
+        <tr>
+            <th>Movie</th>
+            <th>Character</th>
+            <th>Gender</th>
+            <th>Homeworld</th>
+            <th>Diameter</th>
+        </tr>
+        {% for r in results %}
+        <tr>
+            <td>{{ r.title }}</td>
+            <td>{{ r.characters__name }}</td>
+            <td>{{ r.characters__gender }}</td>
+            <td>{{ r.characters__homeworld__name }}</td>
+            <td>{{ r.characters__homeworld__diameter }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% elif results is not None %}
+    <p>Nothing corresponding to your research</p>
+{% endif %}
+
+{% endblock %}

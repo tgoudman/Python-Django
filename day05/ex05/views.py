@@ -50,15 +50,13 @@ def ex05_remove(request: HttpRequest) -> HttpResponse:
 	try: 
 		file = request.path[1:] + ".html"
 		form = deleteDatabaseEx05()
-		empty = len(get_movies())
+		empty = len(get_movies()) == 0
 		if request.method == 'POST':
 			form = deleteDatabaseEx05(request.POST)
 			if form.is_valid():
-				if form.cleaned_data["movies"]:
-					Movies.objects.all().delete()
-				elif form.cleaned_data["movie"]:
-					Movies.objects.filter(episode_nb=form.cleaned_data["movie"]).delete()
-				empty = len(get_movies())
+				episode = form.cleaned_data["movie"]
+				Movies.objects.filter(episode_nb=episode).delete()
+				empty = len(get_movies()) == 0
 		return render(request, file, {"form": form, "empty": empty})
 	except Exception as e:
 		return render(request, "error.html", {"code" : "Error", "message" : str(e)})

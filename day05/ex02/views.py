@@ -24,7 +24,7 @@ def ex02_init(request: HttpRequest) -> HttpResponse:
 		""")
 		connection.commit()
 		cursor.execute(" SELECT COUNT (*) FROM ex02_movies ")
-		countDatabase = cursor.fetchone()[0]
+		countDatabase = cursor.fetchone()
 		cursor.close()
 		connection.close()
 		file = request.path[1:] + ".html"
@@ -69,11 +69,11 @@ def ex02_populate(request: HttpRequest) -> HttpResponse:
 		inserted = []
 		for movie in movies:
 			cursor.execute(insert_query, movie)
-			inserted.append(movie)
 			if cursor.fetchone() is None:
 				conflicts.append(movie[1])
-		connection.commit()
-
+			else:
+				inserted.append(movie)
+		connection.commit() 
 		print("Data inserted successfully !")
 		cursor.close()
 		connection.close()
@@ -98,5 +98,5 @@ def ex02_display(request: HttpRequest) -> HttpResponse:
 		else:
 			return render(request, file, {"error": "No data available"})
 	except Exception as e:
-		return render(request, file, {"error": "No data available"})
+		return render(request, "error.html", {"error": "No data available"})
 

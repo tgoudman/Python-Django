@@ -1,0 +1,53 @@
+from django.db import models
+
+class Planets(models.Model):
+    name            = models.CharField(max_length=64, unique=True)
+    climate         = models.TextField(null=True, blank=True)
+    diameter        = models.IntegerField(null=True, blank=True)
+    orbital_period  = models.IntegerField(null=True, blank=True)
+    population      = models.BigIntegerField(null=True, blank=True)
+    rotation_period = models.IntegerField(null=True, blank=True)
+    surface_water   = models.FloatField(null=True, blank=True)
+    terrain         = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)   
+    class Meta:
+        db_table = "ex10_planets"
+
+    def __str__(self):
+        return self.name
+
+
+class People(models.Model):
+    name        = models.CharField(max_length=64, unique=True)
+    birth_year  = models.CharField(max_length=32, null=True, blank=True)
+    gender      = models.CharField(max_length=32, null=True, blank=True)
+    eye_color   = models.CharField(max_length=32, null=True, blank=True)
+    hair_color  = models.CharField(max_length=32, null=True, blank=True)
+    height      = models.IntegerField(null=True, blank=True)
+    mass        = models.FloatField(null=True, blank=True)
+    homeworld   = models.ForeignKey(Planets, on_delete=models.SET_NULL, null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = "ex10_people"
+
+    def __str__(self):
+        return self.name
+
+
+class Movies(models.Model):
+    episode_nb    = models.IntegerField(primary_key=True)
+    title         = models.CharField(max_length=64, unique=True)
+    opening_crawl = models.TextField(null=True, blank=True)
+    director      = models.CharField(max_length=32)
+    producer      = models.CharField(max_length=128)
+    release_date  = models.DateField()
+    characters    = models.ManyToManyField(People, blank=True)  # ✅ many to many
+
+    class Meta:
+        db_table = "ex10_movies"
+
+    def __str__(self):
+        return self.title

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from .models import Movies
 
-def ex03_init(request: HttpRequest) -> HttpResponse:
+def ex03_populate(request: HttpRequest) -> HttpResponse:
     file = request.path[1:] + ".html"
     data_movies = [
         (1, "The Phantom Menace", "George Lucas", "Rick McCallum", "1999-05-19"),
@@ -15,16 +15,16 @@ def ex03_init(request: HttpRequest) -> HttpResponse:
     ]
     for movie in data_movies:
         try:
-            movieClass, created = Movies.objects.get_or_create(
-                episode_nb=movie[0],
-                defaults={
-                    "title": movie[1],
-                    "director": movie[2],
-                    "producer": movie[3],
-                    "release_date": movie[4],
-                }
-            )
-            movieClass.full_clean()
+            if not Movies.objects.filter(episode_nb=movie[0]).exists():
+                new_movie = Movies(
+                    episode_nb   = movie[0],
+                    title        = movie[1],
+                    director     = movie[2],
+                    producer     = movie[3],
+                    release_date = movie[4],
+                )
+                new_movie.full_clean()
+                new_movie.save()
         except Exception as e:
             return render(request, "error.html", {"code": "OperationalError", "message": str(e)})
     return render(request, file)
