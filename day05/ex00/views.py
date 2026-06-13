@@ -28,7 +28,6 @@ def connectDataBase(request):
         cur.close()
         # close connection
         conn.close()
-        return None
     except psycopg2.OperationalError as e:
         return render(request, "error.html", {"code": "OperationalError", "message": str(e)})
     except psycopg2.ProgrammingError as e:

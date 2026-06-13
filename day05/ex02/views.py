@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 import psycopg2
+from psycopg2.errorcodes import NO_DATA_FOUND
 from .forms import resetDataBase
 
 # Create your views here.
@@ -62,7 +63,7 @@ def ex02_populate(request: HttpRequest) -> HttpResponse:
 		insert_query = """ 
 			INSERT INTO ex02_movies (episode_nb, title, director, producer, release_date)
 			VALUES (%s, %s, %s, %s, %s)
-            ON CONFLICT (episode_nb) DO NOTHING
+			ON CONFLICT (episode_nb) DO NOTHING
             RETURNING episode_nb;
 			"""
 		conflicts = []
@@ -81,7 +82,7 @@ def ex02_populate(request: HttpRequest) -> HttpResponse:
 		error = ", ".join(conflicts) if conflicts else None
 		return render(request, file, {"form": form, "error" : conflicts, "moviesInserted" : inserted})
 	except Exception as e:
-		return render(request, "error.html", {"code": "Error", "message": str(e)})
+		return render(request, "error.html", {"code": "500", "message": str(e)})
 		
 def ex02_display(request: HttpRequest) -> HttpResponse:
 	try:
@@ -96,7 +97,12 @@ def ex02_display(request: HttpRequest) -> HttpResponse:
 		if data:
 			return render(request, file, {"data": data})
 		else:
-			return render(request, file, {"error": "No data available"})
+			return render(request, "error.html", {"code": 404,"message":  "No data available"})
+	except psycopg2.Error as e:
+		errCode = 500
+		if (e.pgcode == NO_DATA_FOUND):
+			errCode = 404
+		return render(request, "error.html", {"code": errCode, "message": e.pgerror})
 	except Exception as e:
-		return render(request, "error.html", {"error": "No data available"})
+		return render(request, "error.html", {"code": 500, "message": str(e)})
 
